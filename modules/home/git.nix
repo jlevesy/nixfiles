@@ -1,27 +1,30 @@
-{ lib, config, pkgs, ...}: 
-
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   options = {
     git = {
       username = lib.mkOption {
         default = "unknown";
         description = ''
-	  Git Username
-	'';
+          Git Username
+        '';
       };
 
       email = lib.mkOption {
         default = "unknown@unknown.com";
         description = ''
-	  Git Username
-	'';
+          Git Username
+        '';
       };
 
       signingKey = lib.mkOption {
         default = null;
         description = ''
-	  Signing key to user
-	'';
+          Signing key to use
+        '';
       };
     };
   };
@@ -32,6 +35,11 @@
       userName = config.git.username;
       userEmail = config.git.email;
 
+      signing = lib.mkIf (config.git.signingKey != null) {
+        key = config.git.signingKey;
+        signByDefault = true;
+      };
+
       diff-so-fancy = {
         enable = true;
       };
@@ -40,7 +48,7 @@
         st = "status";
         br = "branch";
         co = "checkout";
-        l  = "log --pretty='%C(yellow)%h -%Creset %s%Creset' --abbrev-commit --graph";
+        l = "log --pretty='%C(yellow)%h -%Creset %s%Creset' --abbrev-commit --graph";
         lg = "log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
         lgs = "log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --stat";
         lgsp = "log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --stat -p";
@@ -53,29 +61,23 @@
       extraConfig = {
         ui = {
           color = true;
-	};
+        };
         core = {
           whitespace = "trailing-space,space-before-tab";
-	};
-	pull = {
+        };
+        pull = {
           rebase = false;
-	  ff = "only";
-	};
-	push = {
+          ff = "only";
+        };
+        push = {
           default = "simple";
-	};
-	rerere = {
+        };
+        rerere = {
           enabled = true;
-	};
-	gpg = lib.mkIf (config.git.signingKey != null) {
+        };
+        gpg = lib.mkIf (config.git.signingKey != null) {
           format = "ssh";
-	};
-	commit = {
-          gpgsign = config.git.signingKey != null;
-	};
-	tag = {
-          gpgsign = config.git.signingKey != null;
-	};
+        };
       };
     };
   };

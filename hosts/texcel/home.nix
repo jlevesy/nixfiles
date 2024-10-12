@@ -19,6 +19,7 @@
   git = {
     username = "Julien Levesy";
     email = "453265+jlevesy@users.noreply.github.com";
+    signingKey = "/home/jlevesy/.ssh/id_github.pub";
   };
 
   programs.home-manager.enable = true;

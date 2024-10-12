@@ -1,5 +1,8 @@
-{ pkgs, lib, ...}:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   services.pipewire = {
     enable = true;
     pulse.enable = true;

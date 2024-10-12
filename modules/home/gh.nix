@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.gh = {
     enable = true;
     settings = {
@@ -8,7 +6,7 @@
 
       alias = {
         co = "pr checkout";
-	pv = "pr view";
+        pv = "pr view";
       };
     };
   };
