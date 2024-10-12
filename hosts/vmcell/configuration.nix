@@ -10,6 +10,7 @@
     inputs.home-manager.nixosModules.default
     ../../modules/system/core.nix
     ../../modules/system/sound.nix
+    ../../modules/system/hyprland.nix
   ];
 
   core = {
