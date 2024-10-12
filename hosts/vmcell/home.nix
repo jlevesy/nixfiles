@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "jlevesy";
   home.homeDirectory = "/home/jlevesy";
   home.stateVersion = "24.05";
@@ -10,6 +12,7 @@
     ../../modules/home/git.nix
     ../../modules/home/neovim.nix
     ../../modules/home/zellij.nix
+    ../../modules/home/hyprland.nix
     ../../modules/home/gh.nix
   ];
 
