@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.lsd = {
     enable = true;
   };
@@ -30,11 +30,11 @@
       enable = true;
       plugins = [
         "git"
-	"sudo"
+        "sudo"
         "systemd"
-	"docker"
-	"golang"
-	"kubectl"
+        "docker"
+        "golang"
+        "kubectl"
       ];
     };
 
@@ -50,5 +50,4 @@
       cat = "bat";
     };
   };
-
 }
