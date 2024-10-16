@@ -52,12 +52,12 @@
           spacing = 10;
         };
         clock = {
-          tooltip-format =  "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format-alt = "{:%Y-%m-%d}";
         };
         cpu = {
           format = "{load} {usage}% ";
-	  interval =  5;
+          interval = 5;
           tooltip = false;
         };
         memory = {
@@ -95,7 +95,7 @@
             balanced = "";
             power-saver = "";
           };
-	};
+        };
         pulseaudio = {
           format = "{volume}% {icon}";
           format-bluetooth = "{volume}% {icon} {format_source}";
