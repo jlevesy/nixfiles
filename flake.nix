@@ -10,15 +10,35 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
     nixosConfigurations = {
-      vmcell  = nixpkgs.lib.nixosSystem {
+      vmcell = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/vmcell/configuration.nix
-          inputs.home-manager.nixosModules.default
+          home-manager.nixosModules.default
+        ];
+      };
+
+      texcel = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/texcel/configuration.nix
+          home-manager.nixosModules.default
         ];
       };
     };

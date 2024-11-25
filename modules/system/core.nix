@@ -1,21 +1,25 @@
-{ lib, config, pkgs, inputs, ...}:
-
 {
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   options = {
     core = {
       hostname = lib.mkOption {
         default = "unknowncell";
-	description = ''
-	  Hostname.
-	'';
+        description = ''
+          Hostname.
+        '';
       };
 
       user = lib.mkOption {
         default = {
           name = "jlevesy";
-	  groups = ["wheel"];
-	  homeConfig = {};
-	};
+          groups = ["wheel"];
+          homeConfig = {};
+        };
         description = ''
           User configuration.
         '';
@@ -48,7 +52,7 @@
 
     nix = {
       settings = {
-        experimental-features = [ "nix-command" "flakes" ];
+        experimental-features = ["nix-command" "flakes"];
       };
 
       gc = {
@@ -57,8 +61,8 @@
         options = "--delete-older-than 7d";
       };
     };
-	
-    time.timeZone = config.core.timezone; 
+
+    time.timeZone = config.core.timezone;
     i18n.defaultLocale = config.core.locale;
 
     programs.zsh.enable = true;
@@ -70,7 +74,7 @@
     };
 
     home-manager = {
-      extraSpecialArgs = { inherit inputs; }; 
+      extraSpecialArgs = {inherit inputs;};
 
       users = {
         "${config.core.user.name}" = config.core.user.homeConfig;

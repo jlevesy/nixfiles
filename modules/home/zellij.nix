@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ...}:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   xdg.configFile."zellij/config.kdl" = {
     text = builtins.readFile ./zellij/config.kdl;
   };

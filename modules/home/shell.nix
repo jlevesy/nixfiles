@@ -1,4 +1,13 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    alejandra
+    silver-searcher
+  ];
+
+  services.ssh-agent = {
+    enable = true;
+  };
+
   programs.lsd = {
     enable = true;
   };
@@ -30,11 +39,11 @@
       enable = true;
       plugins = [
         "git"
-	"sudo"
+        "sudo"
         "systemd"
-	"docker"
-	"golang"
-	"kubectl"
+        "docker"
+        "golang"
+        "kubectl"
       ];
     };
 
@@ -50,5 +59,4 @@
       cat = "bat";
     };
   };
-
 }

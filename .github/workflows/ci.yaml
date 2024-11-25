@@ -1,0 +1,20 @@
+name: CI
+on:
+  pull_request: {}
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+    - name: Setup Nix
+      uses: cachix/install-nix-action@v27
+    - name: Lint
+      run: |
+        nix run nixpkgs#alejandra -- alejandra --check ./
+    - name: Check
+      run: |
+        nix flake check
+
+
