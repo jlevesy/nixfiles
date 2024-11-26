@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     alejandra
     silver-searcher
+    htop
   ];
 
   services.ssh-agent = {
