@@ -11,10 +11,12 @@
     ../../modules/system/core.nix
     ../../modules/system/sound.nix
     ../../modules/system/hyprland.nix
+    ../../modules/system/gaming.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = ["nvidia"];
+  hardware.graphics.enable32Bit = true;
   hardware.nvidia = {
     open = true;
     modesetting.enable = true;
