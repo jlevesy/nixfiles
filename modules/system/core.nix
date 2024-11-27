@@ -62,6 +62,8 @@
       };
     };
 
+    nixpkgs.config.allowUnfree = true;
+
     time.timeZone = config.core.timezone;
     i18n.defaultLocale = config.core.locale;
 
