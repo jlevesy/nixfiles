@@ -314,5 +314,21 @@
         wallpaper = config.hypr.wallpaper;
       };
     };
+
+    home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.rose-pine-cursor;
+      name = "BreezeX-RosePine-Linux";
+      size = 24;
+    };
+
+    gtk = {
+      enable = true;
+      cursorTheme = {
+        package = pkgs.rose-pine-cursor;
+        name = "BreezeX-RosePine-Linux";
+      };
+    };
   };
 }
