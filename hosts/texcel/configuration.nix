@@ -12,6 +12,7 @@
     ../../modules/system/sound.nix
     ../../modules/system/hyprland.nix
     ../../modules/system/gaming.nix
+    ../../modules/system/inputs.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
