@@ -17,11 +17,12 @@
     enable = true;
   };
 
+  xdg.configFile."starship.toml" = {
+    text = builtins.readFile ./starship/config.toml;
+  };
+
   programs.starship = {
     enable = true;
-    settings = {
-      add_newline = false;
-    };
   };
 
   programs.zsh = {
