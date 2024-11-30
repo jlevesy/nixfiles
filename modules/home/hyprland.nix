@@ -62,10 +62,13 @@
         ];
 
         windowrulev2 = [
-          "workspace 7, class:^(discord)$"
-          "workspace 8, class:^(firefoxdeveloperedition)$"
-          "workspace 9, class:^(KeePassXC)$"
-          "workspace 0, class:^(Spotify)$"
+          "workspace 7, class:^vesktop$"
+          "workspace 8, class:^firefox-aurora$"
+          "workspace 9, class:^org.keepassxc.KeePassXC$"
+          "workspace 10, class:^steam_app_\d+$"
+          "workspace 10, class:steam"
+          "float, class: ^(steam)$, title:^(?!Steam).*$"
+          "minsize 280 635, class: ^(steam)$, title:^(Friends.*)$"
           "suppressevent maximize, class:.*"
         ];
 
