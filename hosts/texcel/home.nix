@@ -10,10 +10,10 @@
   imports = [
     ../../modules/home/shell.nix
     ../../modules/home/git.nix
-    ../../modules/home/neovim.nix
     ../../modules/home/zellij.nix
     ../../modules/home/desktop.nix
     ../../modules/home/gh.nix
+    ../../modules/home/neovim.nix
   ];
 
   git = {
