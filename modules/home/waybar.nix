@@ -14,18 +14,26 @@
         spacing = 4;
         modules-left = [
           "hyprland/workspaces"
+          "custom/separator"
           "hyprland/window"
         ];
         modules-center = [];
         modules-right = [
           "tray"
-          "custom/vpn"
+          "custom/separator"
+          "idle_inhibitor"
+          "custom/separator"
           "network"
+          "custom/separator"
           "cpu"
+          "custom/separator"
           "memory"
+          "custom/separator"
           "pulseaudio"
+          "custom/separator"
           "power-profiles-daemon"
           "battery"
+          "custom/separator"
           "clock"
         ];
 
@@ -35,34 +43,47 @@
           warp-on-scroll = false;
           format = "{icon}";
           format-icons = {
-            "1" = "";
-            "2" = "";
-            "3" = "";
-            "4" = "";
-            "5" = "";
-            "6" = "";
-            "7" = "";
-            "8" = "";
-            "9" = "";
-            "10" = "";
+            "1" = " ";
+            "2" = " ";
+            "3" = " ";
+            "4" = " ";
+            "5" = " ";
+            "6" = " ";
+            "7" = " ";
+            "8" = " ";
+            "9" = " ";
+            "10" = " ";
+          };
+        };
+
+        "custom/separator" = {
+          format = "|";
+          tooltip = false;
+        };
+
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = " ";
+            deactivated = " ";
           };
         };
 
         tray = {
-          spacing = 10;
+          spacing = 4;
         };
         clock = {
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format-alt = "{:%Y-%m-%d}";
+          interval = 1;
+          format = "{:%H:%M:%S}";
         };
         cpu = {
-          format = "{load} {usage}% ";
+          format = "{load} {usage}%  ";
           interval = 5;
           tooltip = false;
         };
         memory = {
           interval = 5;
-          format = "{used:0.1f}G/{total:0.1f}G ";
+          format = "{used:0.1f}G/{total:0.1f}G  ";
         };
         battery = {
           states = {
@@ -72,15 +93,15 @@
           format = "{capacity}% {icon}";
           format-full = "{capacity}% {icon}";
           format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
+          format-plugged = "{capacity}%  ";
           format-alt = "{time} {icon}";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [" " " " " " " " " "];
         };
         network = {
           format-wifi = "  {essid}   {bandwidthDownBytes}   {bandwidthUpBytes}";
           format-ethernet = "  {ifname}   {bandwidthDownBytes}   {bandwidthUpBytes}";
           format-linked = " (No IP)";
-          format-disconnected = "";
+          format-disconnected = " ";
           on-click = "alacritty -e nmtui";
           tooltip = false;
           interval = 5;
@@ -90,10 +111,10 @@
           tooltip-format = "Power profile: {profile}\nDriver: {driver}";
           tooltip = true;
           format-icons = {
-            default = "";
-            performance = "";
-            balanced = "";
-            power-saver = "";
+            default = " ";
+            performance = " ";
+            balanced = " ";
+            power-saver = " ";
           };
         };
         pulseaudio = {
@@ -113,14 +134,6 @@
             default = ["" "" ""];
           };
           on-click = "pavucontrol";
-        };
-        "custom/vpn" = {
-          format = "{icon} ";
-          tooltip-format = "{icon} ";
-          exec = "$HOME/.config/waybar/scripts/conn_status.sh urcloud.cc";
-          return-type = "json";
-          interval = 5;
-          format-icons = ["" ""];
         };
       };
     };
