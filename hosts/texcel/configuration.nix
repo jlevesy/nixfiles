@@ -13,6 +13,7 @@
     ../../modules/system/hyprland.nix
     ../../modules/system/gaming.nix
     ../../modules/system/inputs.nix
+    ../../modules/system/tailscale-client.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
