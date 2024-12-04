@@ -20,12 +20,18 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    disko,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -35,6 +41,15 @@
         modules = [
           ./hosts/texcel/configuration.nix
           home-manager.nixosModules.default
+        ];
+      };
+
+      nascel = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          disko.nixosModules.disko
+          ./hosts/nascel/configuration.nix
         ];
       };
     };
