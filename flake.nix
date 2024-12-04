@@ -29,16 +29,7 @@
     ...
   } @ inputs: {
     nixosConfigurations = {
-      vmcell = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/vmcell/configuration.nix
-          home-manager.nixosModules.default
-        ];
-      };
-
-      texcel = nixpkgs.lib.nixosSystem rec {
+      texcel = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
