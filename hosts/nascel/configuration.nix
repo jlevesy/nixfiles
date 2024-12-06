@@ -6,6 +6,7 @@
     ../../modules/system/zfs.nix
     ../../modules/system/samba.nix
     ../../modules/system/hd-idle.nix
+    ../../modules/system/traefik.nix
   ];
 
   boot = {
