@@ -42,6 +42,7 @@
   };
 
   config = {
+    boot.supportedFilesystems = ["nfs"];
     boot.loader.systemd-boot.enable = true;
 
     networking = {
@@ -68,6 +69,7 @@
     i18n.defaultLocale = config.core.locale;
 
     programs.zsh.enable = true;
+
     users.users.${config.core.user.name} = {
       isNormalUser = true;
       extraGroups = config.core.user.groups;
