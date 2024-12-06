@@ -5,6 +5,7 @@
     ../../modules/system/tailscale-server.nix
     ../../modules/system/zfs.nix
     ../../modules/system/samba.nix
+    ../../modules/system/hd-idle.nix
   ];
 
   boot = {
@@ -15,6 +16,17 @@
   };
 
   zfs.extraPools = ["datatank"];
+
+  hd-idle.drives = [
+    {
+      drive = "/dev/disk/by-id/ata-MB2000GCWDA_Z1X6PRWA";
+      delay = 300;
+    }
+    {
+      drive = "/dev/disk/by-id/ata-MB2000GCWDA_Z1X6PXM9";
+      delay = 300;
+    }
+  ];
 
   networking = {
     hostId = "cbcb6a1c";
