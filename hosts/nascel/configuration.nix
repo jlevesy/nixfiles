@@ -4,6 +4,7 @@
     ./disk-config.nix
     ../../modules/system/tailscale-server.nix
     ../../modules/system/zfs.nix
+    ../../modules/system/samba.nix
   ];
 
   boot = {
@@ -18,12 +19,24 @@
   networking = {
     hostId = "cbcb6a1c";
     hostName = "nascel"; # Define your hostname.
-    firewall.enable = true;
+    firewall = {
+      enable = true;
+      allowPing = true;
+      allowedTCPPorts = [
+        2049 # NFS.
+      ];
+    };
   };
 
-  users.users.jlevesy = {
-    isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+  users = {
+    users.jlevesy = {
+      isNormalUser = true;
+      extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    };
+    users.share = {
+      isSystemUser = true;
+      group = "users";
+    };
   };
 
   time.timeZone = "Europe/Paris";
@@ -42,6 +55,14 @@
     };
   };
   nixpkgs.config.allowUnfree = true;
+
+  services.nfs.server.enable = true;
+  samba = {
+    serverName = "nascel";
+    storagePath = "/datatank/share";
+    shareUser = "share";
+    shareGroup = "users";
+  };
 
   system.stateVersion = "24.05";
 }
