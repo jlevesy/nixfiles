@@ -7,6 +7,7 @@
     ../../modules/system/samba.nix
     ../../modules/system/hd-idle.nix
     ../../modules/system/traefik.nix
+    ../../modules/system/seafile-server.nix
   ];
 
   boot = {
