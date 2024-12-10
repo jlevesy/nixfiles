@@ -14,6 +14,7 @@
     ../../modules/home/desktop.nix
     ../../modules/home/gh.nix
     ../../modules/home/neovim.nix
+    ../../modules/home/development.nix
   ];
 
   git = {
